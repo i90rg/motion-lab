@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS-переходы | Motion Lab</title>
+  <meta name="description" content="CSS-переходы (transition): синтаксис, свойства, функции плавности и пример.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="active item" href="transitions.html" aria-current="page">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">CSS-переходы</h1>
+        <p class="page__lead">Переход (transition) — самый простой способ сделать плавное изменение стилей.</p>
+
+        <section class="content-section js-fade" id="what">
+          <h2 class="ui header">Что такое transition</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/transitions-480.webp 480w, img/transitions-800.webp 800w, img/transitions-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/transitions-800.jpg" srcset="img/transitions-480.jpg 480w, img/transitions-800.jpg 800w, img/transitions-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Квадрат постепенно превращается в круг" loading="lazy">
+            </picture>
+            <figcaption>Переход между двумя состояниями элемента</figcaption>
+          </figure>
+          <p>Обычно при изменении стилей (например, при наведении мыши) элемент меняется мгновенно. Свойство <code>transition</code> позволяет сделать это изменение плавным: браузер сам посчитает все промежуточные значения.</p>
+          <p>Переход всегда происходит между двумя состояниями — начальным и конечным. Если нужно больше шагов, используют <a href="keyframes.html">@keyframes</a>.</p>
+        </section>
+
+        <section class="content-section js-fade" id="syntax">
+          <h2 class="ui header">Синтаксис</h2>
+          <p>Пример кнопки, которая плавно меняет цвет и немного поднимается при наведении:</p>
+          <pre class="code"><code>.button {
+  background-color: #6435c9;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #00b5ad;
+  transform: translateY(-3px);
+}</code></pre>
+          <p>Важно писать <code>transition</code> у обычного состояния, а не у <code>:hover</code>. Тогда анимация будет работать в обе стороны.</p>
+        </section>
+
+        <section class="content-section js-fade" id="properties">
+          <h2 class="ui header">Свойства перехода</h2>
+          <div class="table-wrapper">
+            <table class="ui celled striped table">
+              <caption>Свойства, из которых состоит transition</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Свойство</th>
+                  <th scope="col">Что делает</th>
+                  <th scope="col">Пример</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>transition-property</code></td>
+                  <td>какое свойство анимировать</td>
+                  <td><code>opacity</code></td>
+                </tr>
+                <tr>
+                  <td><code>transition-duration</code></td>
+                  <td>длительность</td>
+                  <td><code>0.3s</code></td>
+                </tr>
+                <tr>
+                  <td><code>transition-timing-function</code></td>
+                  <td>функция плавности</td>
+                  <td><code>ease-in-out</code></td>
+                </tr>
+                <tr>
+                  <td><code>transition-delay</code></td>
+                  <td>задержка перед началом</td>
+                  <td><code>0.1s</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="easing">
+          <h2 class="ui header">Функции плавности</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/easing-480.webp 480w, img/easing-800.webp 800w, img/easing-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/easing-800.jpg" srcset="img/easing-480.jpg 480w, img/easing-800.jpg 800w, img/easing-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Графики функций плавности" loading="lazy">
+            </picture>
+            <figcaption>Разные кривые скорости анимации</figcaption>
+          </figure>
+          <p>Функция плавности (easing) определяет, как меняется скорость анимации. Основные значения:</p>
+          <ul class="ui list">
+            <li><code>linear</code> — одинаковая скорость всё время;</li>
+            <li><code>ease</code> — значение по умолчанию, быстрый старт и медленный конец;</li>
+            <li><code>ease-in</code> — медленное начало;</li>
+            <li><code>ease-out</code> — медленное окончание;</li>
+            <li><code>ease-in-out</code> — медленно в начале и в конце;</li>
+            <li><code>cubic-bezier(x1, y1, x2, y2)</code> — своя кривая, её удобно подбирать на сайте cubic-bezier.com.</li>
+          </ul>
+        </section>
+
+        <section class="content-section js-fade" id="demo">
+          <h2 class="ui header">Пример</h2>
+          <p>Наведите мышку на квадраты. На телефоне можно нажать кнопку.</p>
+          <div class="demo">
+            <div class="demo__row">
+              <div>
+                <div class="box box--color"></div>
+                <span class="demo__label">цвет</span>
+              </div>
+              <div>
+                <div class="box box--scale"></div>
+                <span class="demo__label">размер</span>
+              </div>
+              <div>
+                <div class="box box--rotate"></div>
+                <span class="demo__label">поворот</span>
+              </div>
+            </div>
+            <button class="ui violet button js-toggle-demo" type="button">Переключить</button>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="tips">
+          <h2 class="ui header">Частые ошибки</h2>
+          <div class="ui warning message">
+            <ul class="list">
+              <li>Не стоит писать <code>transition: all</code> — лучше перечислить нужные свойства.</li>
+              <li>Свойство <code>display</code> обычным способом не анимируется.</li>
+              <li>Анимация <code>width</code>, <code>top</code>, <code>left</code> работает медленнее, чем <code>transform</code>.</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#what">Что такое transition</a>
+              <a class="item" href="#syntax">Синтаксис</a>
+              <a class="item" href="#properties">Свойства перехода</a>
+              <a class="item" href="#easing">Функции плавности</a>
+              <a class="item" href="#demo">Пример</a>
+              <a class="item" href="#tips">Частые ошибки</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

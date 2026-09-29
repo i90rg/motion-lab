@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Библиотека GSAP | Motion Lab</title>
+  <meta name="description" content="Библиотека GSAP: подключение, методы to и from, таймлайны, ScrollTrigger и видеоурок.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="active item" href="gsap.html" aria-current="page">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">Библиотека GSAP</h1>
+        <p class="page__lead">GSAP — одна из самых популярных JavaScript-библиотек для анимации.</p>
+
+        <section class="content-section js-fade" id="what">
+          <h2 class="ui header">Что такое GSAP</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/gsap-480.webp 480w, img/gsap-800.webp 800w, img/gsap-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/gsap-800.jpg" srcset="img/gsap-480.jpg 480w, img/gsap-800.jpg 800w, img/gsap-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Полосы таймлайна" loading="lazy">
+            </picture>
+            <figcaption>Таймлайн — главная фишка GSAP</figcaption>
+          </figure>
+          <p>GSAP (GreenSock Animation Platform) позволяет анимировать почти что угодно: CSS-свойства, SVG, объекты на Canvas. Главные плюсы — простой синтаксис, одинаковая работа во всех браузерах и удобные таймлайны.</p>
+          <p>Сейчас GSAP и все его плагины бесплатные. На этом сайте GSAP используется для появления блоков при прокрутке.</p>
+        </section>
+
+        <section class="content-section js-fade" id="connect">
+          <h2 class="ui header">Подключение</h2>
+          <p>Проще всего подключить библиотеку через CDN:</p>
+          <pre class="code"><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"&gt;&lt;/script&gt;</code></pre>
+          <p>Также можно установить через npm: <code>npm install gsap</code>.</p>
+        </section>
+
+        <section class="content-section js-fade" id="basics">
+          <h2 class="ui header">Основные методы</h2>
+          <pre class="code"><code>// из текущего состояния в новое
+gsap.to('.box', { x: 200, rotation: 360, duration: 1 });
+
+// из указанного состояния в текущее
+gsap.from('.title', { y: -50, opacity: 0, duration: 1 });
+
+// из одного состояния в другое
+gsap.fromTo('.circle', { scale: 0 }, { scale: 1, duration: 0.5 });</code></pre>
+        </section>
+
+        <section class="content-section js-fade" id="timeline">
+          <h2 class="ui header">Таймлайн</h2>
+          <p>Таймлайн позволяет выстроить несколько анимаций друг за другом и управлять ими вместе: запускать, ставить на паузу, проигрывать назад.</p>
+          <pre class="code"><code>const tl = gsap.timeline({ paused: true });
+
+tl.to('.item-1', { y: -40, rotation: 180, duration: 0.5 })
+  .to('.item-2', { scale: 1.5, duration: 0.5 })
+  .to('.item-3', { x: -30, borderRadius: '50%', duration: 0.5 });</code></pre>
+          <div class="demo">
+            <div class="gsap-demo">
+              <div class="gsap-demo__item gsap-demo__item--1"></div>
+              <div class="gsap-demo__item gsap-demo__item--2"></div>
+              <div class="gsap-demo__item gsap-demo__item--3"></div>
+            </div>
+            <button class="ui violet button js-tl-play" type="button">Старт</button>
+            <button class="ui button js-tl-reverse" type="button">Назад</button>
+            <button class="ui button js-tl-restart" type="button">Заново</button>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="scroll">
+          <h2 class="ui header">ScrollTrigger</h2>
+          <p>ScrollTrigger — плагин GSAP, который запускает анимацию при прокрутке страницы. Именно так на этом сайте появляются разделы.</p>
+          <pre class="code"><code>gsap.registerPlugin(ScrollTrigger);
+
+gsap.from('.section', {
+  y: 40,
+  opacity: 0,
+  scrollTrigger: {
+    trigger: '.section',
+    start: 'top 85%'
+  }
+});</code></pre>
+        </section>
+
+        <section class="content-section js-fade" id="video">
+          <h2 class="ui header">Видеоурок</h2>
+          <p>Урок о том, как добавить анимации на сайт с помощью JavaScript и GSAP (видео с RuTube):</p>
+          <div class="video">
+            <iframe src="https://rutube.ru/play/embed/992f92db5ba5602438dcb059cb434824" title="Видеоурок: JS анимация с помощью GSAP" loading="lazy" allow="clipboard-write; autoplay" allowfullscreen></iframe>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#what">Что такое GSAP</a>
+              <a class="item" href="#connect">Подключение</a>
+              <a class="item" href="#basics">Основные методы</a>
+              <a class="item" href="#timeline">Таймлайн</a>
+              <a class="item" href="#scroll">ScrollTrigger</a>
+              <a class="item" href="#video">Видеоурок</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

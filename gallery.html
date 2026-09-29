@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Галерея | Motion Lab</title>
+  <meta name="description" content="Галерея иллюстраций к разным видам веб-анимаций с фильтром.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="active item" href="gallery.html" aria-current="page">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">Галерея</h1>
+        <p class="page__lead">Иллюстрации к разным видам анимаций. Нажмите на картинку, чтобы открыть её крупнее.</p>
+
+        <section class="content-section js-fade" id="gallery">
+          <h2 class="ui header">Картинки</h2>
+          <ul class="gallery">
+            <li class="gallery__item" data-category="css">
+              <a class="gallery__link" href="img/transitions-1200.jpg" data-title="Превращение квадрата в круг">
+                <picture>
+                  <source type="image/webp" srcset="img/transitions-480.webp 480w, img/transitions-800.webp 800w, img/transitions-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/transitions-800.jpg" srcset="img/transitions-480.jpg 480w, img/transitions-800.jpg 800w, img/transitions-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Превращение квадрата в круг" title="Превращение квадрата в круг" loading="lazy">
+                </picture>
+                <span class="gallery__title">Превращение квадрата в круг</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="css">
+              <a class="gallery__link" href="img/keyframes-1200.jpg" data-title="Прыгающий мяч">
+                <picture>
+                  <source type="image/webp" srcset="img/keyframes-480.webp 480w, img/keyframes-800.webp 800w, img/keyframes-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/keyframes-800.jpg" srcset="img/keyframes-480.jpg 480w, img/keyframes-800.jpg 800w, img/keyframes-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Прыгающий мяч" title="Прыгающий мяч" loading="lazy">
+                </picture>
+                <span class="gallery__title">Прыгающий мяч</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="css">
+              <a class="gallery__link" href="img/wave-1200.jpg" data-title="Волна из точек">
+                <picture>
+                  <source type="image/webp" srcset="img/wave-480.webp 480w, img/wave-800.webp 800w, img/wave-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/wave-800.jpg" srcset="img/wave-480.jpg 480w, img/wave-800.jpg 800w, img/wave-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Волна из точек" title="Волна из точек" loading="lazy">
+                </picture>
+                <span class="gallery__title">Волна из точек</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="css">
+              <a class="gallery__link" href="img/spiral-1200.jpg" data-title="Спираль">
+                <picture>
+                  <source type="image/webp" srcset="img/spiral-480.webp 480w, img/spiral-800.webp 800w, img/spiral-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/spiral-800.jpg" srcset="img/spiral-480.jpg 480w, img/spiral-800.jpg 800w, img/spiral-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Спираль" title="Спираль" loading="lazy">
+                </picture>
+                <span class="gallery__title">Спираль</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="js">
+              <a class="gallery__link" href="img/javascript-1200.jpg" data-title="Синусоиды">
+                <picture>
+                  <source type="image/webp" srcset="img/javascript-480.webp 480w, img/javascript-800.webp 800w, img/javascript-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/javascript-800.jpg" srcset="img/javascript-480.jpg 480w, img/javascript-800.jpg 800w, img/javascript-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Синусоиды" title="Синусоиды" loading="lazy">
+                </picture>
+                <span class="gallery__title">Синусоиды</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="js">
+              <a class="gallery__link" href="img/bounce-1200.jpg" data-title="Отскок мяча">
+                <picture>
+                  <source type="image/webp" srcset="img/bounce-480.webp 480w, img/bounce-800.webp 800w, img/bounce-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/bounce-800.jpg" srcset="img/bounce-480.jpg 480w, img/bounce-800.jpg 800w, img/bounce-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Отскок мяча" title="Отскок мяча" loading="lazy">
+                </picture>
+                <span class="gallery__title">Отскок мяча</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="js">
+              <a class="gallery__link" href="img/orbit-1200.jpg" data-title="Орбиты планет">
+                <picture>
+                  <source type="image/webp" srcset="img/orbit-480.webp 480w, img/orbit-800.webp 800w, img/orbit-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/orbit-800.jpg" srcset="img/orbit-480.jpg 480w, img/orbit-800.jpg 800w, img/orbit-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Орбиты планет" title="Орбиты планет" loading="lazy">
+                </picture>
+                <span class="gallery__title">Орбиты планет</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="gsap">
+              <a class="gallery__link" href="img/gsap-1200.jpg" data-title="Таймлайн">
+                <picture>
+                  <source type="image/webp" srcset="img/gsap-480.webp 480w, img/gsap-800.webp 800w, img/gsap-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/gsap-800.jpg" srcset="img/gsap-480.jpg 480w, img/gsap-800.jpg 800w, img/gsap-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Таймлайн" title="Таймлайн" loading="lazy">
+                </picture>
+                <span class="gallery__title">Таймлайн</span>
+              </a>
+            </li>
+            <li class="gallery__item" data-category="gsap">
+              <a class="gallery__link" href="img/easing-1200.jpg" data-title="Кривые плавности">
+                <picture>
+                  <source type="image/webp" srcset="img/easing-480.webp 480w, img/easing-800.webp 800w, img/easing-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/easing-800.jpg" srcset="img/easing-480.jpg 480w, img/easing-800.jpg 800w, img/easing-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Кривые плавности" title="Кривые плавности" loading="lazy">
+                </picture>
+                <span class="gallery__title">Кривые плавности</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="content-section js-fade" id="about">
+          <h2 class="ui header">Об изображениях</h2>
+          <p>Все картинки подготовлены в трёх размерах (480, 800 и 1200 пикселей) и в двух форматах — WebP и JPEG. С помощью тега <code>&lt;picture&gt;</code> и атрибутов <code>srcset</code> и <code>sizes</code> браузер сам выбирает подходящий размер, поэтому на телефоне загружаются маленькие картинки.</p>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Фильтр</h2>
+            <div class="ui fluid vertical buttons">
+              <button class="ui active button js-filter" type="button" data-filter="all">Все</button>
+              <button class="ui button js-filter" type="button" data-filter="css">CSS</button>
+              <button class="ui button js-filter" type="button" data-filter="js">JavaScript</button>
+              <button class="ui button js-filter" type="button" data-filter="gsap">GSAP</button>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <div class="ui modal gallery-modal">
+    <i class="close icon"></i>
+    <div class="header">Картинка</div>
+    <div class="image content">
+      <img class="ui fluid image" src="img/orbit-1200.jpg" alt="Картинка из галереи">
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

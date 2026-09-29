@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анимации на JavaScript | Motion Lab</title>
+  <meta name="description" content="Анимации с помощью JavaScript: requestAnimationFrame, Web Animations API и IntersectionObserver.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="active item" href="javascript.html" aria-current="page">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">Анимации на JavaScript</h1>
+        <p class="page__lead">Когда возможностей CSS не хватает, анимацией можно управлять из JavaScript.</p>
+
+        <section class="content-section js-fade" id="why">
+          <h2 class="ui header">Зачем нужен JavaScript</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/javascript-480.webp 480w, img/javascript-800.webp 800w, img/javascript-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/javascript-800.jpg" srcset="img/javascript-480.jpg 480w, img/javascript-800.jpg 800w, img/javascript-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Разноцветные синусоиды" loading="lazy">
+            </picture>
+            <figcaption>JavaScript позволяет управлять каждым кадром</figcaption>
+          </figure>
+          <p>CSS хорошо подходит для простых эффектов. Но иногда нужно:</p>
+          <ul class="ui list">
+            <li>поставить анимацию на паузу или запустить её назад;</li>
+            <li>менять анимацию в зависимости от действий пользователя (движение мыши, прокрутка);</li>
+            <li>анимировать то, что не является CSS-свойством, например рисунок на Canvas.</li>
+          </ul>
+        </section>
+
+        <section class="content-section js-fade" id="raf">
+          <h2 class="ui header">requestAnimationFrame</h2>
+          <p>Метод <code>requestAnimationFrame</code> вызывает функцию перед каждой перерисовкой экрана (обычно 60 раз в секунду). Это лучше, чем <code>setInterval</code>, потому что анимация синхронизирована с экраном и останавливается, когда вкладка неактивна.</p>
+          <pre class="code"><code>const box = document.querySelector('.box');
+let x = 0;
+
+function move() {
+  x += 2;
+  box.style.transform = `translateX(${x}px)`;
+  if (x &lt; 300) {
+    requestAnimationFrame(move);
+  }
+}
+
+requestAnimationFrame(move);</code></pre>
+        </section>
+
+        <section class="content-section js-fade" id="waapi">
+          <h2 class="ui header">Web Animations API</h2>
+          <p>Web Animations API — встроенный в браузер способ запускать анимации из JavaScript. Метод <code>element.animate()</code> принимает ключевые кадры и настройки, а возвращает объект, у которого есть методы <code>play()</code>, <code>pause()</code>, <code>reverse()</code>.</p>
+          <pre class="code"><code>const animation = square.animate([
+  { transform: 'translateX(-100px) rotate(0deg)' },
+  { transform: 'translateX(100px) rotate(360deg)' }
+], {
+  duration: 1500,
+  iterations: Infinity,
+  direction: 'alternate'
+});
+
+animation.pause();</code></pre>
+          <div class="demo">
+            <div class="square js-waapi"></div>
+            <button class="ui violet button js-waapi-play" type="button">Старт</button>
+            <button class="ui button js-waapi-pause" type="button">Пауза</button>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="observer">
+          <h2 class="ui header">IntersectionObserver</h2>
+          <p>Часто нужно запустить анимацию, когда блок появляется на экране при прокрутке. Для этого есть <code>IntersectionObserver</code> — он сообщает, когда элемент попал в видимую область. Это удобнее и быстрее, чем обрабатывать событие <code>scroll</code>.</p>
+          <pre class="code"><code>const observer = new IntersectionObserver((entries) =&gt; {
+  entries.forEach((entry) =&gt; {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+});
+
+document.querySelectorAll('.card').forEach((card) =&gt; observer.observe(card));</code></pre>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#why">Зачем нужен JavaScript</a>
+              <a class="item" href="#raf">requestAnimationFrame</a>
+              <a class="item" href="#waapi">Web Animations API</a>
+              <a class="item" href="#observer">IntersectionObserver</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Сравнение способов анимации | Motion Lab</title>
+  <meta name="description" content="Сравнение CSS-переходов, @keyframes, Web Animations API и GSAP, советы по производительности.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="active item" href="comparison.html" aria-current="page">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">Сравнение способов анимации</h1>
+        <p class="page__lead">Какой способ анимации выбрать и как сделать так, чтобы сайт не тормозил.</p>
+
+        <section class="content-section js-fade" id="table">
+          <h2 class="ui header">Сравнительная таблица</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/comparison-480.webp 480w, img/comparison-800.webp 800w, img/comparison-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/comparison-800.jpg" srcset="img/comparison-480.jpg 480w, img/comparison-800.jpg 800w, img/comparison-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Три столбца разной высоты" loading="lazy">
+            </picture>
+            <figcaption>У каждого способа свои плюсы и минусы</figcaption>
+          </figure>
+          <div class="table-wrapper">
+            <table class="ui celled structured table">
+              <caption>Сравнение способов анимации</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Критерий</th>
+                  <th scope="col">CSS transition</th>
+                  <th scope="col">CSS @keyframes</th>
+                  <th scope="col">Web Animations API</th>
+                  <th scope="col">GSAP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Нужна библиотека</th>
+                  <td class="positive">нет</td>
+                  <td class="positive">нет</td>
+                  <td class="positive">нет</td>
+                  <td>да (~25 КБ)</td>
+                </tr>
+                <tr>
+                  <th scope="row">Количество шагов</th>
+                  <td>2 состояния</td>
+                  <td>любое</td>
+                  <td>любое</td>
+                  <td>любое</td>
+                </tr>
+                <tr>
+                  <th scope="row">Пауза и запуск назад</th>
+                  <td class="negative">нет</td>
+                  <td>только пауза</td>
+                  <td class="positive">да</td>
+                  <td class="positive">да</td>
+                </tr>
+                <tr>
+                  <th scope="row">Последовательность анимаций</th>
+                  <td>через задержки</td>
+                  <td>через задержки</td>
+                  <td>сложно</td>
+                  <td class="positive">таймлайн</td>
+                </tr>
+                <tr>
+                  <th scope="row">Анимация при прокрутке</th>
+                  <td class="negative">нет</td>
+                  <td>частично</td>
+                  <td>частично</td>
+                  <td class="positive">ScrollTrigger</td>
+                </tr>
+                <tr>
+                  <th scope="row">Сложность изучения</th>
+                  <td class="positive">низкая</td>
+                  <td class="positive">низкая</td>
+                  <td>средняя</td>
+                  <td>средняя</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="performance">
+          <h2 class="ui header">Производительность</h2>
+          <p>Чтобы анимация была плавной, браузер должен успевать рисовать 60 кадров в секунду, то есть примерно один кадр за 16 мс. Несколько советов:</p>
+          <ul class="ui list">
+            <li>анимировать <code>transform</code> и <code>opacity</code> — браузеру не нужно пересчитывать расположение элементов;</li>
+            <li>не анимировать <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code>, <code>margin</code>;</li>
+            <li>не злоупотреблять свойством <code>will-change</code>;</li>
+            <li>проверять анимацию во вкладке Performance в инструментах разработчика.</li>
+          </ul>
+          <p>Также некоторым людям движение на экране мешает. Для них в системе есть настройка «уменьшить движение», и её можно учесть в CSS:</p>
+          <pre class="code"><code>@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}</code></pre>
+        </section>
+
+        <section class="content-section js-fade" id="choose">
+          <h2 class="ui header">Что выбрать</h2>
+          <div class="ui styled fluid accordion">
+            <div class="active title"><i class="dropdown icon"></i>CSS transition</div>
+            <div class="active content">
+              <p>Для простых эффектов: наведение на кнопки и ссылки, открытие меню, смена цвета.</p>
+            </div>
+            <div class="title"><i class="dropdown icon"></i>CSS @keyframes</div>
+            <div class="content">
+              <p>Для повторяющихся анимаций: загрузчики, пульсация, появление элементов при загрузке страницы.</p>
+            </div>
+            <div class="title"><i class="dropdown icon"></i>Web Animations API</div>
+            <div class="content">
+              <p>Когда нужно управлять анимацией из JavaScript, но не хочется подключать библиотеку.</p>
+            </div>
+            <div class="title"><i class="dropdown icon"></i>GSAP</div>
+            <div class="content">
+              <p>Для сложных анимаций из многих шагов, анимаций при прокрутке и работы с SVG.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#table">Сравнительная таблица</a>
+              <a class="item" href="#performance">Производительность</a>
+              <a class="item" href="#choose">Что выбрать</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Анимации и переходы в вебе | Motion Lab</title>
+  <meta name="description" content="Учебный сайт об анимациях в веб-разработке: CSS-переходы, @keyframes, JavaScript и GSAP.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="active item" href="index.html" aria-current="page">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="item" href="keyframes.html">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">Анимации и переходы в вебе</h1>
+        <p class="page__lead">Учебный сайт о том, как делать анимации на CSS, JavaScript и с помощью библиотеки GSAP.</p>
+
+        <section class="content-section js-fade" id="intro">
+          <h2 class="ui header">О сайте</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/hero-480.webp 480w, img/hero-800.webp 800w, img/hero-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/hero-800.jpg" srcset="img/hero-480.jpg 480w, img/hero-800.jpg 800w, img/hero-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Цветные круги, летящие по кривой" loading="lazy">
+            </picture>
+            <figcaption>Анимация — это изменение свойств элемента во времени</figcaption>
+          </figure>
+          <p>Этот сайт я сделал в рамках учебного проекта по CSS-фреймворкам. Тема проекта — анимации и переходы. Здесь собраны основные способы «оживить» веб-страницу: от простых CSS-переходов до библиотеки GSAP.</p>
+          <p>В каждом разделе есть немного теории, примеры кода и небольшие демо, которые можно попробовать прямо на странице. Сайт сверстан на фреймворке Semantic UI, а анимации на самом сайте сделаны с помощью CSS и GSAP.</p>
+        </section>
+
+        <section class="content-section js-fade" id="why">
+          <h2 class="ui header">Зачем нужна анимация</h2>
+          <p>Анимация на сайте нужна не только для красоты. Правильно сделанная анимация помогает пользователю понять, что происходит на странице:</p>
+          <ul class="ui list">
+            <li>показывает, что действие выполнено (например, кнопка нажалась);</li>
+            <li>объясняет, откуда появился новый элемент (выпадающее меню, модальное окно);</li>
+            <li>привлекает внимание к важному — ошибке в форме или уведомлению;</li>
+            <li>делает интерфейс приятнее и «живее».</li>
+          </ul>
+          <p>Но если анимации слишком много или она слишком медленная, сайт начинает раздражать. Поэтому важно знать меру.</p>
+        </section>
+
+        <section class="content-section js-fade" id="sections">
+          <h2 class="ui header">Разделы сайта</h2>
+          <div class="ui three doubling stackable cards">
+            <div class="ui card section-card">
+              <a class="image" href="transitions.html">
+                <picture>
+                  <source type="image/webp" srcset="img/transitions-480.webp 480w, img/transitions-800.webp 800w, img/transitions-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/transitions-800.jpg" srcset="img/transitions-480.jpg 480w, img/transitions-800.jpg 800w, img/transitions-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="CSS-переходы" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="transitions.html">CSS-переходы</a>
+                <div class="description">Как плавно менять цвет, размер и положение элементов при наведении.</div>
+              </div>
+            </div>
+            <div class="ui card section-card">
+              <a class="image" href="keyframes.html">
+                <picture>
+                  <source type="image/webp" srcset="img/keyframes-480.webp 480w, img/keyframes-800.webp 800w, img/keyframes-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/keyframes-800.jpg" srcset="img/keyframes-480.jpg 480w, img/keyframes-800.jpg 800w, img/keyframes-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="CSS-анимации" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="keyframes.html">CSS-анимации</a>
+                <div class="description">Правило @keyframes и анимации, которые работают без JavaScript.</div>
+              </div>
+            </div>
+            <div class="ui card section-card">
+              <a class="image" href="javascript.html">
+                <picture>
+                  <source type="image/webp" srcset="img/javascript-480.webp 480w, img/javascript-800.webp 800w, img/javascript-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/javascript-800.jpg" srcset="img/javascript-480.jpg 480w, img/javascript-800.jpg 800w, img/javascript-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="JavaScript" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="javascript.html">JavaScript</a>
+                <div class="description">requestAnimationFrame и Web Animations API.</div>
+              </div>
+            </div>
+            <div class="ui card section-card">
+              <a class="image" href="gsap.html">
+                <picture>
+                  <source type="image/webp" srcset="img/gsap-480.webp 480w, img/gsap-800.webp 800w, img/gsap-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/gsap-800.jpg" srcset="img/gsap-480.jpg 480w, img/gsap-800.jpg 800w, img/gsap-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="GSAP" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="gsap.html">GSAP</a>
+                <div class="description">Популярная библиотека для сложных анимаций и таймлайнов.</div>
+              </div>
+            </div>
+            <div class="ui card section-card">
+              <a class="image" href="comparison.html">
+                <picture>
+                  <source type="image/webp" srcset="img/comparison-480.webp 480w, img/comparison-800.webp 800w, img/comparison-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/comparison-800.jpg" srcset="img/comparison-480.jpg 480w, img/comparison-800.jpg 800w, img/comparison-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Сравнение" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="comparison.html">Сравнение</a>
+                <div class="description">Таблица: что лучше выбрать для своей задачи.</div>
+              </div>
+            </div>
+            <div class="ui card section-card">
+              <a class="image" href="gallery.html">
+                <picture>
+                  <source type="image/webp" srcset="img/orbit-480.webp 480w, img/orbit-800.webp 800w, img/orbit-1200.webp 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw">
+                  <img src="img/orbit-800.jpg" srcset="img/orbit-480.jpg 480w, img/orbit-800.jpg 800w, img/orbit-1200.jpg 1200w" sizes="(min-width: 992px) 230px, (min-width: 768px) 350px, 100vw" width="1200" height="800" alt="Галерея" loading="lazy">
+                </picture>
+              </a>
+              <div class="content">
+                <a class="header" href="gallery.html">Галерея</a>
+                <div class="description">Картинки-иллюстрации к разным видам анимаций.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="rules">
+          <h2 class="ui header">Основные правила</h2>
+          <ol class="ui list">
+            <li>Длительность обычного перехода — от 200 до 500 мс.</li>
+            <li>Лучше всего анимировать свойства <code>transform</code> и <code>opacity</code>, они работают быстрее всего.</li>
+            <li>Для появления элементов подходит <code>ease-out</code>, для исчезновения — <code>ease-in</code>.</li>
+            <li>Анимация должна что-то объяснять, а не просто отвлекать.</li>
+            <li>Нужно учитывать настройку <code>prefers-reduced-motion</code> для людей, которым мешает движение на экране.</li>
+          </ol>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#intro">О сайте</a>
+              <a class="item" href="#why">Зачем нужна анимация</a>
+              <a class="item" href="#sections">Разделы сайта</a>
+              <a class="item" href="#rules">Основные правила</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>

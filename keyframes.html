@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS-анимации | Motion Lab</title>
+  <meta name="description" content="CSS-анимации с помощью @keyframes: синтаксис, свойства animation и примеры.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ui container">
+      <div class="site-header__top">
+        <a class="site-header__logo" href="index.html">Motion Lab</a>
+        <button class="ui inverted basic icon button site-header__toggle" type="button" aria-label="Открыть меню" aria-expanded="false">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <nav class="site-header__nav" aria-label="Главное меню">
+        <div class="ui secondary inverted menu site-header__menu">
+          <a class="item" href="index.html">Главная</a>
+          <a class="item" href="transitions.html">Переходы</a>
+          <a class="active item" href="keyframes.html" aria-current="page">Анимации</a>
+          <a class="item" href="javascript.html">JavaScript</a>
+          <a class="item" href="gsap.html">GSAP</a>
+          <a class="item" href="comparison.html">Сравнение</a>
+          <a class="item" href="gallery.html">Галерея</a>
+          <a class="item" href="contacts.html">Контакты</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="ui container page">
+    <div class="ui grid">
+      <main class="sixteen wide mobile sixteen wide tablet eleven wide computer column">
+        <h1 class="ui header page__title">CSS-анимации</h1>
+        <p class="page__lead">С помощью правила @keyframes можно делать сложные и бесконечные анимации без JavaScript.</p>
+
+        <section class="content-section js-fade" id="what">
+          <h2 class="ui header">Что такое @keyframes</h2>
+          <figure class="content-section__image">
+            <picture>
+              <source type="image/webp" srcset="img/keyframes-480.webp 480w, img/keyframes-800.webp 800w, img/keyframes-1200.webp 1200w" sizes="(min-width: 992px) 700px, 100vw">
+              <img src="img/keyframes-800.jpg" srcset="img/keyframes-480.jpg 480w, img/keyframes-800.jpg 800w, img/keyframes-1200.jpg 1200w" sizes="(min-width: 992px) 700px, 100vw" width="1200" height="800" alt="Кадры плёнки с прыгающим мячом" loading="lazy">
+            </picture>
+            <figcaption>Ключевые кадры анимации</figcaption>
+          </figure>
+          <p>В отличие от перехода, анимация на <code>@keyframes</code> может состоять из многих шагов (ключевых кадров), повторяться бесконечно и запускаться сама, без наведения мыши.</p>
+          <p>Сначала анимацию описывают через <code>@keyframes</code> и дают ей имя, а потом подключают к элементу свойством <code>animation</code>.</p>
+        </section>
+
+        <section class="content-section js-fade" id="syntax">
+          <h2 class="ui header">Синтаксис</h2>
+          <pre class="code"><code>@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.circle {
+  animation: pulse 1.5s ease-in-out infinite;
+}</code></pre>
+        </section>
+
+        <section class="content-section js-fade" id="properties">
+          <h2 class="ui header">Свойства animation</h2>
+          <ul class="ui list">
+            <li><code>animation-name</code> — имя анимации из <code>@keyframes</code>;</li>
+            <li><code>animation-duration</code> — длительность одного повтора;</li>
+            <li><code>animation-timing-function</code> — функция плавности;</li>
+            <li><code>animation-delay</code> — задержка;</li>
+            <li><code>animation-iteration-count</code> — сколько раз повторить (<code>infinite</code> — бесконечно);</li>
+            <li><code>animation-direction</code> — направление (<code>alternate</code> — туда и обратно);</li>
+            <li><code>animation-fill-mode</code> — какие стили оставить после окончания;</li>
+            <li><code>animation-play-state</code> — пауза или воспроизведение.</li>
+          </ul>
+        </section>
+
+        <section class="content-section js-fade" id="demo">
+          <h2 class="ui header">Примеры</h2>
+          <p>Все три примера сделаны только на CSS. Кнопка «Пауза» меняет <code>animation-play-state</code>.</p>
+          <div class="demo">
+            <div class="demo__row">
+              <div>
+                <div class="spinner"></div>
+                <span class="demo__label">загрузка</span>
+              </div>
+              <div>
+                <div class="pulse"></div>
+                <span class="demo__label">пульс</span>
+              </div>
+              <div>
+                <div class="ball"></div>
+                <span class="demo__label">прыжок</span>
+              </div>
+            </div>
+            <button class="ui violet button js-pause-demo" type="button">Пауза</button>
+          </div>
+        </section>
+
+        <section class="content-section js-fade" id="fill-mode">
+          <h2 class="ui header">animation-fill-mode</h2>
+          <p>Это свойство часто вызывает вопросы. Оно отвечает за то, как выглядит элемент до начала и после конца анимации:</p>
+          <ul class="ui list">
+            <li><code>none</code> — после анимации элемент возвращается к обычным стилям;</li>
+            <li><code>forwards</code> — остаётся в последнем кадре;</li>
+            <li><code>backwards</code> — во время задержки уже принимает стили первого кадра;</li>
+            <li><code>both</code> — сразу оба варианта.</li>
+          </ul>
+          <p>Например, для плавного появления блока при загрузке страницы обычно пишут <code>animation: fade-in 0.5s ease-out both;</code>.</p>
+        </section>
+      </main>
+
+      <aside class="sixteen wide mobile sixteen wide tablet five wide computer column">
+        <div class="sidebar">
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Содержание</h2>
+            <div class="ui link list">
+              <a class="item" href="#what">Что такое @keyframes</a>
+              <a class="item" href="#syntax">Синтаксис</a>
+              <a class="item" href="#properties">Свойства animation</a>
+              <a class="item" href="#demo">Примеры</a>
+              <a class="item" href="#fill-mode">animation-fill-mode</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Полезные ссылки</h2>
+            <div class="ui bulleted link list">
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_transitions">MDN: CSS-переходы</a>
+              <a class="item" href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_animations">MDN: CSS-анимации</a>
+              <a class="item" href="https://gsap.com/docs/v3/">Документация GSAP</a>
+              <a class="item" href="https://semantic-ui.com/">Semantic UI</a>
+            </div>
+          </div>
+          <div class="ui segment sidebar__block">
+            <h2 class="ui small header">Подписка на новости</h2>
+            <p>Оставьте e-mail, и я пришлю, когда на сайте появятся новые примеры.</p>
+            <form class="ui form subscribe-form" action="#" method="post" novalidate>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input type="email" id="subscribe-email" name="email" placeholder="example@mail.ru">
+              </div>
+              <button class="ui violet fluid button" type="submit">Подписаться</button>
+              <div class="ui success message">Спасибо за подписку!</div>
+              <div class="ui error message"></div>
+            </form>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="ui inverted vertical segment site-footer">
+    <div class="ui container">
+      <div class="ui stackable inverted divided three column grid">
+        <div class="column">
+          <h2 class="ui inverted small header">О проекте</h2>
+          <p>Учебный сайт про анимации и переходы в веб-разработке. Сделан на CSS-фреймворке Semantic UI с использованием библиотеки GSAP.</p>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Разделы</h2>
+          <div class="ui inverted link list">
+            <a class="item" href="transitions.html">Переходы</a>
+            <a class="item" href="keyframes.html">Анимации</a>
+            <a class="item" href="javascript.html">JavaScript</a>
+            <a class="item" href="gsap.html">GSAP</a>
+            <a class="item" href="comparison.html">Сравнение</a>
+            <a class="item" href="gallery.html">Галерея</a>
+          </div>
+        </div>
+        <div class="column">
+          <h2 class="ui inverted small header">Контакты</h2>
+          <div class="ui inverted list">
+            <div class="item"><i class="mail icon"></i><div class="content"><a href="mailto:motionlab@example.com">motionlab@example.com</a></div></div>
+            <div class="item"><i class="github icon"></i><div class="content"><a href="https://github.com/i90rg/motion-lab">github.com/i90rg</a></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="site-footer__copy">&copy; 2026 Гоглев Игорь Олегович, группа 335. Учебный проект.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.min.js"></script>
+</body>
+</html>
